@@ -33,8 +33,10 @@ function load_one_sp($id){
     return pdo_query_one($query);
 }
 function load_one_spdm($iddm){
+    
     $query="SELECT * FROM sanpham WHERE iddm=".$iddm;
     return pdo_query($query);
+
 }
 function dem_sp_dm($iddm){
     $query="SELECT COUNT(*) as countsp FROM sanpham WHERE iddm='$iddm'";
