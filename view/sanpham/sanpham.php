@@ -7,7 +7,9 @@
                         <div id="shop-1" class="tab-pane active">
                             <div class="row">
                                 <?php foreach ($list_sp_home as $sp) : ?>
+
                                     <?php extract($sp); ?>
+
                                     <div class="col-lg-4 col-sm-5">
                                         <div class="product-wrap mb-35" data-aos="fade-up" data-aos-delay="200">
                                             <div class="product-img img-zoom mb-25">
@@ -34,7 +36,9 @@
                                             </div>
                                         </div>
                                     </div>
+
                                 <?php endforeach; ?>
+                                
                             </div>
                         </div>
                     </div>

@@ -3,7 +3,9 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <?php
+
                             extract($sanpham);
+                            
                         ?>
                     <div class="product-details-img-wrap" data-aos="fade-up" data-aos-delay="200">
                             <div class="swiper-container product-details-big-img-slider-2 pd-big-img-style">
