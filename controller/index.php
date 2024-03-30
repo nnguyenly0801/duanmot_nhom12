@@ -107,62 +107,62 @@ if(isset($_GET['act'])&&($_GET['act']!="")){
             }else{header("location: ?act=trangchu");}
             include "../view/taikhoan/thongtintk.php";
             break;
-        case 'dangxuat':
-            session_unset();
-            header('location: ?act=trangchu');
-            break;
-        case 'quenmatkhau':
-            $thongbao="";
-            if(isset($_SESSION['user'])){
-                if(isset($_POST['quenmatkhau'])){
-                    $email=$_POST['email'];
-                    $tendangnhap=$_POST['tendangnhap'];
-                    $tk=load_one_tk($_SESSION['user']['id']);
-                    if($email===$tk['email']&&($tendangnhap===$tk['tendangnhap'])){
-                        $thongbao="Mật khẩu của bạn là: ".$tk['matkhau'];
-                    }else{
-                        $thongbao="thông tin không chính xác !";
+            case 'dangxuat':
+                session_unset();
+                header('location: ?act=trangchu');
+                break;
+            case 'quenmatkhau':
+                $thongbao="";
+                if(isset($_SESSION['user'])){
+                    if(isset($_POST['quenmatkhau'])){
+                        $email=$_POST['email'];
+                        $tendangnhap=$_POST['tendangnhap'];
+                        $tk=load_one_tk($_SESSION['user']['id']);
+                        if($email===$tk['email']&&($tendangnhap===$tk['tendangnhap'])){
+                            $thongbao="Mật khẩu của bạn là: ".$tk['matkhau'];
+                        }else{
+                            $thongbao="thông tin không chính xác !";
+                        }
+                    }
+                }else{
+                    if(isset($_POST['quenmatkhau'])){
+                        $emailcheck=$_POST['email'];
+                        $tendangnhapcheck=$_POST['tendangnhap'];
+                        $tk=quenmatkhau($emailcheck,$tendangnhapcheck);
+                        if($tk){
+                            $thongbao="Mật khẩu của bạn là: ".$tk['matkhau'];
+                        }else{
+                            $thongbao="thông tin không chính xác !";
+                        }
+                        
                     }
                 }
-            }else{
-                if(isset($_POST['quenmatkhau'])){
-                    $emailcheck=$_POST['email'];
-                    $tendangnhapcheck=$_POST['tendangnhap'];
-                    $tk=quenmatkhau($emailcheck,$tendangnhapcheck);
-                    if($tk){
-                        $thongbao="Mật khẩu của bạn là: ".$tk['matkhau'];
-                    }else{
-                        $thongbao="thông tin không chính xác !";
+                include "../view/taikhoan/quenmatkhau.php";
+                break;
+            case 'doimatkhau':
+                if(isset($_SESSION['user'])){
+                    $matkhaucuErr="";
+                    $matkhaumoiErr="";
+                    $nhaplaimatkhaumoiErr="";
+                    if(isset($_POST['doimatkhau'])){
+                        $matkhaucu=$_POST['matkhaucu'];
+                        $matkhaumoi=$_POST['matkhaumoi'];
+                        $nhaplaimatkhaumoi=$_POST['nhaplaimatkhaumoi'];
+                        $check=true;
+                        if(empty(trim($matkhaucu))){$check=false; $matkhaucuErr="Vui lòng không bỏ trống !";}
+                        $tk=load_one_tk($_SESSION['user']['id']);
+                        if($tk){
+                            if($matkhaucu!==$tk['matkhau']){$check=false; $matkhaucuErr="Mật khẩu không chính xác !";}
+                        }
+                        if(empty(trim($matkhaumoi))){$check=false; $matkhaumoiErr="Vui lòng không bỏ trống !";}
+                        if($nhaplaimatkhaumoi!==$matkhaumoi){$check=false;  $nhaplaimatkhaumoiErr="Mật khẩu nhập lại không trùng khớp !";}
+                        if($check){
+                            if($tk){update_mk($matkhaumoi,$tk['id']); $nhaplaimatkhaumoiErr="Chúc mừng bạn đã đổi mật khẩu thành công !";}
+                        }
                     }
-                    
-                }
-            }
-            include "../view/taikhoan/quenmatkhau.php";
-            break;
-        case 'doimatkhau':
-            if(isset($_SESSION['user'])){
-                $matkhaucuErr="";
-                $matkhaumoiErr="";
-                $nhaplaimatkhaumoiErr="";
-                if(isset($_POST['doimatkhau'])){
-                    $matkhaucu=$_POST['matkhaucu'];
-                    $matkhaumoi=$_POST['matkhaumoi'];
-                    $nhaplaimatkhaumoi=$_POST['nhaplaimatkhaumoi'];
-                    $check=true;
-                    if(empty(trim($matkhaucu))){$check=false; $matkhaucuErr="Vui lòng không bỏ trống !";}
-                    $tk=load_one_tk($_SESSION['user']['id']);
-                    if($tk){
-                        if($matkhaucu!==$tk['matkhau']){$check=false; $matkhaucuErr="Mật khẩu không chính xác !";}
-                    }
-                    if(empty(trim($matkhaumoi))){$check=false; $matkhaumoiErr="Vui lòng không bỏ trống !";}
-                    if($nhaplaimatkhaumoi!==$matkhaumoi){$check=false;  $nhaplaimatkhaumoiErr="Mật khẩu nhập lại không trùng khớp !";}
-                    if($check){
-                        if($tk){update_mk($matkhaumoi,$tk['id']); $nhaplaimatkhaumoiErr="Chúc mừng bạn đã đổi mật khẩu thành công !";}
-                    }
-                }
-            }else{header("location: ?act=trangchu");}
-            include "../view/taikhoan/doimatkhau.php";
-            break;
+                }else{header("location: ?act=trangchu");}
+                include "../view/taikhoan/doimatkhau.php";
+                break;
         /* End tai khoan */
         
         case 'tieptucdathang':
@@ -466,7 +466,7 @@ if(isset($_GET['act'])&&($_GET['act']!="")){
                 $noidunglh=$_POST['noidunglh'];
                 date_default_timezone_set('Asia/Ho_Chi_Minh');
                 $ngaygui = date('Y-m-d H:i:s');
-                insert_lienhe($hovatenlh,$emaillh,$sodienthoailh,$noidunglh,$ngaygui);
+                //insert_lienhe($hovatenlh,$emaillh,$sodienthoailh,$noidunglh,$ngaygui);
             }
             include "../view/tintuc/lienhe.php";
             break;
