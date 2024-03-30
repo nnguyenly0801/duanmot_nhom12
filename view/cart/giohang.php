@@ -6,6 +6,7 @@
                     <div class="cart-table-content">
                         <div class="table-content table-responsive">
                             <table>
+
                                 <thead>
                                     <tr class="giohangthead">
                                         <th class=""></th>
@@ -17,6 +18,7 @@
                                         <th class="width-remove"></th>
                                     </tr>
                                 </thead>
+
                                 <tbody class="giohangtbody">
                                     
                                     <?php
@@ -70,6 +72,7 @@
                                         </div>
                                     </div>
                                     <div class="grand-total-btn btn-hover">
+
                                         <?php
                                             if(isset($_SESSION['user'])){
                                                 if(isset($countgh)){
@@ -80,7 +83,9 @@
                                                 $tieptucdathang="?act=dangnhap";
                                             }
                                         ?>
+
                                         <a class="btn btn-primary" href="<?=$tieptucdathang?>">Tiếp tục đặt hàng</a>
+                                        
                                     </div>
                                 </div>
                             </div>
