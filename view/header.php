@@ -3,6 +3,7 @@
 
 
 <!-- Mirrored from htmldemo.net/urdan/urdan/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 13 Nov 2023 10:10:52 GMT -->
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -45,9 +46,9 @@
     <link rel="stylesheet" href="../assets/giao_dien_home/assets/css/plugins/easyzoom.css" />
     <link rel="stylesheet" href="../assets/giao_dien_home/assets/css/plugins/slinky.css" />
     <link rel="stylesheet" href="../assets/giao_dien_home/assets/css/style.css" />
-    <link rel="stylesheet"
-		href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
 </head>
+
 <body>
     <div class="main-wrapper main-wrapper-2">
         <header class="header-area header-responsive-padding">
@@ -67,7 +68,7 @@
                                         <li><a href="">Giới Thiệu</a></li>
                                         <li><a href="?act=sanpham">Sản Phẩm</a></li>
                                         <li><a href="?act=tintuc">Tin Tức</a></li>
-                                        <li><a href="?act=lienhe">Liên Hệ </a></li>  
+                                        <li><a href="?act=lienhe">Liên Hệ </a></li>
                                     </ul>
                                 </nav>
                             </div>
@@ -88,13 +89,36 @@
                                 </div>
                                 <div class="header-action-style main-menu">
                                     <nav>
-                                        
+                                        <ul>
+                                            <?php
+                                            if (isset($_SESSION['user']) && $_SESSION['user'] != "") {
+                                                extract($_SESSION['user']);
+                                            ?>
+                                                <li><a title="Tài khoản" href="?act=thongtintk"><i class="pe-7s-user"></i></a>
+                                                    <ul class="">
+                                                        <li><a href="?act=thongtintk" style="font-size:13px;">Thông tin tài khoản</a></li>
+                                                        <li><a href="?act=lichsumuahang" style="font-size:13px;">Đơn mua</a></li>
+                                                        <?php if ($role == 1) : ?>
+                                                            <li><a href="../admin/index.php" style="font-size:13px;">Quản trị viên</a></li>
+                                                        <?php endif; ?>
+                                                        <li><a href="?act=dangxuat" style="font-size:13px;">Đăng xuất</a></li>
+                                                    </ul>
+                                                </li>
+                                            <?php } else { ?>
+                                                <li><a title="Đăng nhập" href="?act=dangnhap"><i class="pe-7s-user"></i></a>
+                                                    <ul class="">
+                                                        <li><a href="?act=dangnhap" style="font-size:13px;">Đăng nhập</a></li>
+                                                        <li><a href="?act=dangky" style="font-size:13px;">Đăng ký</a></li>
+                                                    </ul>
+                                                </li>
+                                            <?php } ?>
+                                        </ul>
                                     </nav>
                                 </div>
                                 <!-- <div class="header-action-style">
                                     <a title="Đăng nhập" href="?act=dangnhap"><i class="pe-7s-user"></i></a>
                                 </div> -->
-                                
+
                                 <div class="header-action-style d-block d-lg-none">
                                     <a class="mobile-menu-active-button" href="#"><i class="pe-7s-menu"></i></a>
                                 </div>
