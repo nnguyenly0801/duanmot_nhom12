@@ -118,6 +118,16 @@
                                 <!-- <div class="header-action-style">
                                     <a title="Đăng nhập" href="?act=dangnhap"><i class="pe-7s-user"></i></a>
                                 </div> -->
+                                <div class="header-action-style header-action-cart">
+                                    <a class="cart-active" href="?act=giohang"><i class="pe-7s-shopbag"></i>
+                                        <?php
+                                            if(isset($countgh)){
+                                                echo '<span id="countgh" class="product-count bg-black">'.$countgh['COUNT(*)'].'</span>';
+                                            }
+                                        ?>
+                                        
+                                    </a>
+                                </div>
 
                                 <div class="header-action-style d-block d-lg-none">
                                     <a class="mobile-menu-active-button" href="#"><i class="pe-7s-menu"></i></a>

@@ -61,7 +61,7 @@ foreach ($listgh as $gh) {
                 &nbsp;
             </p>
             <footer class="footer">
-                <p>&copy; VNPAY <?= date('Y');?></p>
+                <p> VNPAY <?= date('Y');?></p>
             </footer>
         </div> 
     </div> 

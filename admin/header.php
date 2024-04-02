@@ -69,6 +69,7 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="?act=listqtv">Danh sách quản trị viên</a>
                         <a class="collapse-item" href="?act=listtv">Danh sách người dùng</a>
+                        <a class="collapse-item" href="?act=listtkkhoa">Tài khoản bị khóa</a>
                         
                     </div>
                 </div>
@@ -114,6 +115,12 @@
                     <span>Quản lý đơn hàng</span>
                 </a>
                 <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="?act=listdh">Danh sách đơn hàng</a>
+                        <a class="collapse-item" href="?act=kiemduyet">Kiểm duyệt đơn hàng</a>
+                        <a class="collapse-item" href="?act=dagiao">Danh sách đã giao</a>
+                        <a class="collapse-item" href="?act=dahuy">Danh sách đã hủy</a>
+                    </div>
                     
                 </div>
             </li>

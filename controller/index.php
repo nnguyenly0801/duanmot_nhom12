@@ -164,7 +164,23 @@ if(isset($_GET['act'])&&($_GET['act']!="")){
                 include "../view/taikhoan/doimatkhau.php";
                 break;
         /* End tai khoan */
-        
+        case 'giohang':
+            if($_SERVER["REQUEST_METHOD"] == "POST"){
+                $id=$_POST['id'];
+                $thanhtien=$_POST['thanhtien'];
+                $soluong=$_POST['soluong'];
+                update_giohang($soluong,$thanhtien,$id);
+            }
+            include "../view/cart/giohang.php";
+            break;
+        case 'xoagiohang':
+            if(isset($_GET['id'])){
+                delete_giohang($_GET['id'],$_SESSION['user']['id']);
+            }else{
+                delete_giohang(0,$_SESSION['user']['id']);
+            }
+            header ('location: ?act=giohang');
+            break;
         case 'tieptucdathang':
             if(isset($_SESSION['user'])){
                 if(isset($_POST['dathang'])){

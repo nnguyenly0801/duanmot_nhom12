@@ -113,7 +113,7 @@
                 &nbsp;
             </p>
             <footer class="footer">
-                   <p>&copy; VNPAY <?php echo date('Y');?></p>
+                   <p> VNPAY <?php echo date('Y');?></p>
             </footer>
         </div>  
     </body>
