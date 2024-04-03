@@ -8,6 +8,20 @@ function load_sp_nb(){
     return pdo_query($query);
 }
 
+function load_all_sp($kyw,$page){
+    $query="SELECT sanpham.*, danhmuc.tendm FROM sanpham INNER JOIN danhmuc ON sanpham.iddm=danhmuc.id WHERE 1";
+    if($kyw!=""){
+        $query .=" AND (tensp like '%".$kyw."%' OR giasp LIKE '%" . $kyw . "%')";
+    }
+    if($page>0){
+        $batdau=intval($page*9-9);
+        $query .=" ORDER BY id desc limit $batdau,9";
+    }else{
+        $query .=" ORDER BY id asc";
+    }
+    return pdo_query($query);
+}
+
 function load_sp_lq($iddm){
     $query="SELECT sanpham.*, danhmuc.tendm FROM sanpham INNER JOIN danhmuc ON sanpham.iddm=danhmuc.id WHERE 1";
     if($iddm!=""){
@@ -34,7 +48,21 @@ function dem_sp(){
     $query="SELECT COUNT(*) FROM sanpham WHERE 1";
     return pdo_query_one($query);
 }
-
+function load_all_spdm($iddm,$kyw,$giadau,$giacuoi,$page){
+    $query="SELECT * FROM sanpham WHERE 1";
+    if($iddm > 0){
+        $query .=" AND iddm=$iddm";
+    }
+    if($kyw != ''){
+        $query .=" AND (tensp like '%".$kyw."%' OR giakm LIKE '%" . $kyw . "%')";
+    }
+    if($giadau>0 && $giacuoi>0){
+        $query .=" AND giakm BETWEEN $giadau AND $giacuoi";
+    }
+    $batdau=intval($page*9-9);
+    $query .=" ORDER BY id desc limit $batdau,9";
+    return pdo_query($query);
+}
 function insert_sp($danhmuc, $tensp, $giasp, $image,$giakm, $soluong,$khuyenmai, $mota) {
     $conn=pdo_get_connection();
     $query_check = "SELECT COUNT(*) as count FROM sanpham WHERE image = :image OR tensp=:tensp";
