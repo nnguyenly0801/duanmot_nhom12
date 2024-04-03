@@ -81,9 +81,9 @@
                                         <i class="pe-7s-close s-close"></i>
                                     </a>
                                     <div class="search-wrap-1">
-                                        <form action="#">
-                                            <input placeholder="Tìm kiếm" type="text">
-                                            <button class="button-search"><i class="pe-7s-search"></i></button>
+                                        <form class="search-2-form" method="post" action="?act=sanpham">
+                                            <input placeholder="Tìm kiếm" type="text" name="timkiem" value="<?= isset($kyw) ? ($kyw) : '' ?>">
+                                            <button class="button-search" type="submit" name="submittimkiem"><i class=" ti-search "></i></button>
                                         </form>
                                     </div>
                                 </div>
@@ -121,11 +121,11 @@
                                 <div class="header-action-style header-action-cart">
                                     <a class="cart-active" href="?act=giohang"><i class="pe-7s-shopbag"></i>
                                         <?php
-                                            if(isset($countgh)){
-                                                echo '<span id="countgh" class="product-count bg-black">'.$countgh['COUNT(*)'].'</span>';
-                                            }
+                                        if (isset($countgh)) {
+                                            echo '<span id="countgh" class="product-count bg-black">' . $countgh['COUNT(*)'] . '</span>';
+                                        }
                                         ?>
-                                        
+
                                     </a>
                                 </div>
 
