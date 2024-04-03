@@ -289,23 +289,23 @@ if(isset($_GET['act'])&&($_GET['act']!="")){
             }else{header("location: ?act=trangchu");}
             include "../view/cart/dongydathang.php";
             break;
-        case "thanhtoanonline":
-            if(isset($_POST['tieptuc'])){
-                date_default_timezone_set('Asia/Ho_Chi_Minh');
-                $ngaydathang = date('Y-m-d H:i:s');
-                $thongtindathang=$_SESSION['thongtin_dathang'];
-                $iddonhang=mua_hang($_SESSION['user']['id'],$thongtindathang['hovatennhan'],$ngaydathang,$thongtindathang['diachinhan'],$thongtindathang['sodienthoainhan'],1,1,1);
-                foreach ($listgh as $gh) {
-                    extract($gh);
-                    insert_chitietdonhang($iddonhang,$idsp,$soluong,$giakm,$thanhtien);
-                    $soluongsp=$soluongsp-$soluong;
-                    update_sl_sp($idsp,$soluongsp);
-                }
-                delete_giohang(0,$_SESSION['user']['id']);
-                unset($_SESSION['thongtin_dathang']);
-                header("location: ?act=lichsumuahang");
-            }
-            break;
+        // case "thanhtoanonline":
+        //     if(isset($_POST['tieptuc'])){
+        //         date_default_timezone_set('Asia/Ho_Chi_Minh');
+        //         $ngaydathang = date('Y-m-d H:i:s');
+        //         $thongtindathang=$_SESSION['thongtin_dathang'];
+        //         $iddonhang=mua_hang($_SESSION['user']['id'],$thongtindathang['hovatennhan'],$ngaydathang,$thongtindathang['diachinhan'],$thongtindathang['sodienthoainhan'],1,1,1);
+        //         foreach ($listgh as $gh) {
+        //             extract($gh);
+        //             insert_chitietdonhang($iddonhang,$idsp,$soluong,$giakm,$thanhtien);
+        //             $soluongsp=$soluongsp-$soluong;
+        //             update_sl_sp($idsp,$soluongsp);
+        //         }
+        //         delete_giohang(0,$_SESSION['user']['id']);
+        //         unset($_SESSION['thongtin_dathang']);
+        //         header("location: ?act=lichsumuahang");
+        //     }
+        //     break;
         case "lichsumuahang":
             if(isset($_SESSION['user'])){
                 if(isset($_GET['danhanhang'])&&($_GET['danhanhang']!="")){
@@ -378,6 +378,8 @@ if(isset($_GET['act'])&&($_GET['act']!="")){
             
             break;
         /* END GIO HANG */
+
+        
         case 'sanpham':
             if(isset($_POST['submittimkiem'])) $kyw=$_POST['timkiem'];
             else $kyw="";

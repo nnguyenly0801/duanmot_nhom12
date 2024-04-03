@@ -16,4 +16,3 @@ foreach ($listthongke as $thongke) {
     );
 }
 echo json_encode($chart_data);
-?>

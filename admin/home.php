@@ -35,10 +35,10 @@
                 success: function (response) {
                     char.setData(response);
                 },
-                // error: function (error) {
-                //     console.error('Lỗi: ', error);
-                //     alert('Có lỗi xảy ra khi tải dữ liệu mới');
-                // }
+                error: function (error) {
+                    console.error('Lỗi: ', error);
+                    alert('Có lỗi xảy ra khi tải dữ liệu mới');
+                }
             });
         });
         function thongke(){
@@ -49,10 +49,10 @@
                 success: function (response) {
                     char.setData(response);
                 },
-                // error: function (error) {
-                //     console.error('Lỗi: ', error);
-                //     alert('Có lỗi xảy ra khi tải dữ liệu mới');
-                // }
+                error: function (error) {
+                    console.error('Lỗi: ', error);
+                    alert('Có lỗi xảy ra khi tải dữ liệu mới');
+                }
             });
         }
     });

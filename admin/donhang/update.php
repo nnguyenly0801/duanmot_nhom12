@@ -48,9 +48,9 @@
                     <select class="form-control" id="sel1" name="trangthai">
                         <option <?= ($trangthai=="2")?'selected':'' ?> value="2">Đơn hàng mới</option>
                         <option <?= ($trangthai=="3")?'selected':'' ?> value="3">Đang giao</option>
-                        <?php if($thanhtoan==1) : ?>
+                        <?php //if($thanhtoan==1) : ?>
                         <option <?= ($trangthai=="4")?'selected':'' ?> value="4">Đã giao</option>
-                        <?php endif; ?>
+                        <?php //endif; ?>
                     </select>
                 </div>
             </div>
