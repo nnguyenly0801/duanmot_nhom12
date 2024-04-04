@@ -107,10 +107,10 @@ if(!$_SESSION['user']) header('location: ?act=dangnhap');
 
                                         </div> -->
                                     </div>
-                                    <div class="pay-top sin-payment">
+                                    <!-- <div class="pay-top sin-payment">
                                         <input id="payment_method_1" class="input-radio" type="radio" value="1" name="phuongthuctt">
                                         <label for="payment_method_1">CHUYỂN KHOẢN</label>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                             <div class="Place-order btn-hover">
