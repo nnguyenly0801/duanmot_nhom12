@@ -89,7 +89,7 @@ function themgiohang(idsanpham,giakm){
             }, 1500);
         },
         error: function(error) {
-            window.location.href="../../boutique/controller/index.php?act=dangnhap";
+            window.location.href="../../controller/index.php?act=dangnhap";
           }
     });
 }

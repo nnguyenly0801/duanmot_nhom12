@@ -453,7 +453,7 @@ if(isset($_GET['act'])&&($_GET['act']!="")){
                                     header("location: ?act=giohang");
                                 }
                         }else{
-                            header("location: ?act=dangnhap");
+                            header("location: ../view/taikhoan/dangnhap.php"); 
                         }
                     }
                 }
@@ -474,7 +474,7 @@ if(isset($_GET['act'])&&($_GET['act']!="")){
                     }
                     
                 }
-            }else{ header("location: ?act=dangnhap");};
+            }else{ header("location: ../view/taikhoan/dangnhap.php");};
            include "../view/cart/chitiethuydon.php";
             break;
             if($_SERVER['REQUEST_METHOD']=="POST"){
