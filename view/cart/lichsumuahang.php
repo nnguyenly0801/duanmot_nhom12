@@ -65,7 +65,7 @@
                                         
                                         <div style="display: inline-block; padding: 0px; width: 56.5%;" class="cart-shiping-update-wrapper btnlichsu">
                                             
-                                            <?php if($item['trangthai']==="Chờ xác nhận"||$item['trangthai']==="Đã xác nhận"||$item['trangthai']==="Chuẩn bị giao cho đơn vị vận chuyển"){ ?>
+                                            <?php if($item['trangthai']==="Chờ xác nhận"){ ?>
                                                 <div class="cart-shiping-update btn-hover">
                                                     <a style="float: right;" href="?act=huydonhang&id=<?= $item['id'];?>">Hủy đơn hàng</a>
                                                 </div>

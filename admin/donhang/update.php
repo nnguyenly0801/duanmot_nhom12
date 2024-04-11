@@ -45,7 +45,7 @@
             <div class="mb-3 row">
                 <div class="col-md-12">
                     <label for="sel1">Trạng thái giao hàng</label>
-                    <select class="form-control" id="sel1" name="trangthai">
+                    <select class="form-control" id="sel1" name="trangthai" >
                         <option <?= ($trangthai=="2")?'selected':'' ?> value="2">Đơn hàng mới</option>
                         <option <?= ($trangthai=="3")?'selected':'' ?> value="3">Đang giao</option>
                         <?php //if($thanhtoan==1) : ?>
@@ -54,6 +54,7 @@
                     </select>
                 </div>
             </div>
+
             <div>
                 <button type="submit" name="submit" class="btn btn-success">Xác nhận</button>
                 <a href="?act=listdh"><button type="button" class="btn btn-success">Quay lại</button></a>

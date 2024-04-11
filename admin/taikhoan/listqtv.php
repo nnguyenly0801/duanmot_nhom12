@@ -35,26 +35,26 @@
                             <?php
                             foreach ($listtk as $tk) {
                                 extract($tk);
-                                if($role==1){
-                                    $role="Quản trị viên";
-                                }else{
-                                    $role="Thành viên";
+                                if ($role == 1) {
+                                    $role = "Quản trị viên";
+                                } else {
+                                    $role = "Thành viên";
                                 }
-                                if($trangthai==0){
+                                if ($trangthai == 0) {
                                     echo '<tr>
-                                        <td class="align-middle text-center">'.$id.'</td>
-                                        <td class="col-2 align-middle">'.$hovaten.'</td>
-                                        <td class="col-1 align-middle">'.$tendangnhap.'</td>
-                                        <td  class="col-1 align-middle">'.$email.'</td>
-                                        <td class="col-1 align-middle">'.$sodienthoai.'</td>
-                                        <td class="col-2 align-middle">'.$diachi.'</td>
-                                        <td>'.$role.'</td>
-                                        <td class="col-2 align-middle text-center"><a href="?act=updatetk&id='.$id.'"><button type="button" class="btn btn-secondary btn-sm">Sửa</button></a> | 
-                                            <a href="?act=xoatk&id='.$id.'"><button type="button" class="btn btn-secondary btn-sm">Khóa</button></a></td>
+                                        <td class="align-middle text-center">' . $id . '</td>
+                                        <td class="col-2 align-middle">' . $hovaten . '</td>
+                                        <td class="col-1 align-middle">' . $tendangnhap . '</td>
+                                        <td  class="col-1 align-middle">' . $email . '</td>
+                                        <td class="col-1 align-middle">' . $sodienthoai . '</td>
+                                        <td class="col-2 align-middle">' . $diachi . '</td>
+                                        <td>' . $role . '</td>
+                                        <td class="col-2 align-middle text-center"><a href="?act=updatetk&id=' . $id . '"><button type="button" class="btn btn-secondary btn-sm">Sửa</button></a> | 
+                                            <a href="?act=xoatk&id=' . $id . '"><button type="button" class="btn btn-secondary btn-sm">Khóa</button></a></td>
                                     </tr>';
                                 }
                             }
-                            ?>                        
+                            ?>
                         </tbody>
                     </table>
                 </div>
