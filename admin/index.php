@@ -515,22 +515,23 @@ if(isset($_GET['act'])&&($_GET['act']!="")){
         // case 'trangchu':
          //    include "thongke/thongke.php";
         //     break; 
-        // case 'danhsachthongke': 
-        //     $listthongke=load_all_thongke(365);
-        //     include "thongke/list.php";
-        //     break;   
-        //     if(isset($_GET['id'])&&($_GET['id']!="")){
-        //         $id=$_GET['id'];
-        //         $banner=load_one_banner($id);
-        //         if($banner){
-        //             delete_banner($banner['idbanner']);
-        //             echo '<script>
-        //                 alert("Bạn đã xóa thành công !");
-        //                 window.location.href="?act=qlbanner";
-        //             </script>';
-        //         }
-        //     }
-        //     break;
+        case 'danhsachthongke': 
+            $listthongke=load_all_thongke(365);
+            $listslsp = sum_sanpham();
+            include "thongke/list.php";
+            break;   
+            // if(isset($_GET['id'])&&($_GET['id']!="")){
+            //     $id=$_GET['id'];
+            //     $banner=load_one_banner($id);
+            //     if($banner){
+            //         delete_banner($banner['idbanner']);
+            //         echo '<script>
+            //             alert("Bạn đã xóa thành công !");
+            //             window.location.href="?act=qlbanner";
+            //         </script>';
+            //     }
+            // }
+            break;
         default:
         include "home.php";
             break;

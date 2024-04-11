@@ -25,17 +25,21 @@
                                 else if($item['trangthai']==1) $item['trangthai']="Đã xác nhận"; 
                                 else if($item['trangthai']==2) $item['trangthai']="Chuẩn bị giao cho đơn vị vận chuyển"; 
                                 else if($item['trangthai']==3) $item['trangthai']="Đơn hàng đang được giao"; 
-                                else if($item['trangthai']==4) $item['trangthai']="Đã giao hàng"; 
+                                else if($item['trangthai']==4){
+                                    $item['trangthai']="Đã giao hàng"; 
+                                    $item['thanhtoan']="Đã thanh toán";
+                                } 
                                 else if($item['trangthai']==5) $item['trangthai']="Đã hủy"; 
-                                if($item['thanhtoan']==0) $item['thanhtoan']="Chưa thanh toán";
-                                else if($item['thanhtoan']==1) $item['thanhtoan']="Đã thanh toán"; 
+                                //if($item['trangthai']="Đã giao hàng") $item['thanhtoan']="Đã thanh toán";
+                                if($item['thanhtoan']==1) $item['thanhtoan']="Đã thanh toán"; 
+                                else if($item['thanhtoan']==0) $item['thanhtoan']="Chưa thanh toán"; 
                             ?>
                             
                         <form action="?act=lichsumuahang" method="post">
                             <div class="card shadow-0 border mb-4">
                                 <div class="card-body">
                                     <div class="row">
-                                        <?php foreach (load_all_ctdh_lsmh($item['id']) as $ctdh) : ?>
+                                        <?php $tongthanhtoan=0; foreach (load_all_ctdh_lsmh($item['id']) as $ctdh) : ?>
                                             <div class="col-md-2">
                                                 <img src="../uploads/<?= $ctdh['image'];?>" class="img-fluid" alt="Err">
                                             </div>
@@ -51,7 +55,7 @@
                                             <hr class="mb-4 mt-2" style="background-color: #e0e0e0; opacity: 1;">
                                             <input type="checkbox" name="id[]" value="<?= $ctdh['idsp']; ?>" hidden checked>
                                             <input type="hidden" name="giasp" value="<?= $ctdh['dongia'];?>">
-                                        <?php endforeach; ?>
+                                        <?php $tongthanhtoan+=$ctdh['thanhtien']; endforeach; ?>
 
                                         <div style="display: inline-block;" class="row align-items-center">
                                             <div class="col-md-2">
@@ -60,6 +64,7 @@
                                                 <p style="width: 500px;" class="text-muted mb-0 small">Địa chỉ nhận hàng: <span style="color:#000;"><?= $item['diachinhan'];?></span></p>
                                                 <p style="width: 500px;" class="text-muted mb-0 small">Thanh toán: <span style="color:#2ecc71;"><?= $item['thanhtoan'];?></span></p>
                                                 <p style="width: 500px;" class="text-muted mb-0 small">Mã hóa đơn: <span style="color:red;">TB-<?= $item['id'];?></span></p>
+                                                <p style="width: 500px;" class="text-muted mb-0 small">Mã hóa đơn: <span><?=number_format($tongthanhtoan, 0, ',', '.');?> đ</span></p>
                                             </div>
                                         </div>
                                         
@@ -90,7 +95,7 @@
                                 </div>
                             </div>
                         </form>
-                        <?php endforeach; ?>
+                        <?php  endforeach; ?>
                     </div>
                     <div id="tap2" class="card-body p-4  an">
                         <?php foreach ($choxacnhan as $item) : ?>
@@ -101,7 +106,7 @@
                             <div class="card shadow-0 border mb-4">
                                 <div class="card-body">
                                     <div class="row">
-                                        <?php foreach (load_all_ctdh_lsmh($item['id']) as $ctdh) : ?>
+                                        <?php $tongthanhtoan=0; foreach (load_all_ctdh_lsmh($item['id']) as $ctdh) : ?>
                                             <div class="col-md-2">
                                                 <img src="../uploads/<?= $ctdh['image'];?>" class="img-fluid" alt="Err">
                                             </div>
@@ -115,7 +120,7 @@
                                                 <p style="font-size: 18px;" class="text-muted mb-0">Tổng tiền: <?= number_format($ctdh['thanhtien'], 0, ',', '.');?>đ</p>
                                             </div>
                                             <hr class="mb-4 mt-2" style="background-color: #e0e0e0; opacity: 1;">
-                                        <?php endforeach; ?>
+                                        <?php  $tongthanhtoan+=$ctdh['thanhtien']; endforeach; ?>
 
                                         <div style="display: inline-block;" class="row align-items-center">
                                             <div class="col-md-2">
@@ -124,6 +129,8 @@
                                                 <p style="width: 500px;" class="text-muted mb-0 small">Địa chỉ nhận hàng: <span style="color:#000;"><?= $item['diachinhan'];?></span></p>
                                                 <p style="width: 500px;" class="text-muted mb-0 small">Thanh toán: <span style="color:#2ecc71;"><?= $item['thanhtoan'];?></span></p>
                                                 <p style="width: 500px;" class="text-muted mb-0 small">Mã hóa đơn: <span style="color:red;">TB-<?= $item['id'];?></span></p>
+                                                <p style="width: 500px;" class="text-muted mb-0 small">Mã hóa đơn: <span><?=number_format($tongthanhtoan, 0, ',', '.');?> đ</span></p>
+
                                             </div>
                                         </div>
                                         
@@ -146,7 +153,7 @@
                             <div class="card shadow-0 border mb-4">
                                 <div class="card-body">
                                     <div class="row">
-                                        <?php foreach (load_all_ctdh_lsmh($item['id']) as $ctdh) : ?>
+                                        <?php $tongthanhtoan=0; foreach (load_all_ctdh_lsmh($item['id']) as $ctdh) : ?>
                                             <div class="col-md-2">
                                                 <img src="../uploads/<?= $ctdh['image'];?>" class="img-fluid" alt="Err">
                                             </div>
@@ -160,7 +167,7 @@
                                                 <p style="font-size: 18px;" class="text-muted mb-0">Tổng tiền: <?= number_format($ctdh['thanhtien'], 0, ',', '.');?>đ</p>
                                             </div>
                                             <hr class="mb-4 mt-2" style="background-color: #e0e0e0; opacity: 1;">
-                                        <?php endforeach; ?>
+                                        <?php  $tongthanhtoan+=$ctdh['thanhtien']; endforeach; ?>
 
                                         <div style="display: inline-block;" class="row align-items-center">
                                             <div class="col-md-2">
@@ -169,14 +176,15 @@
                                                 <p style="width: 500px;" class="text-muted mb-0 small">Địa chỉ nhận hàng: <span style="color:#000;"><?= $item['diachinhan'];?></span></p>
                                                 <p style="width: 500px;" class="text-muted mb-0 small">Thanh toán: <span style="color:#2ecc71;"><?= $item['thanhtoan'];?></span></p>
                                                 <p style="width: 500px;" class="text-muted mb-0 small">Mã hóa đơn: <span style="color:red;">TB-<?= $item['id'];?></span></p>
+                                                <p style="width: 500px;" class="text-muted mb-0 small">Mã hóa đơn: <span><?=number_format($tongthanhtoan, 0, ',', '.');?> đ</span></p>
                                             </div>
                                         </div>
                                         
-                                        <div style="display: inline-block; padding: 0px; width: 56.5%;" class="cart-shiping-update-wrapper btnlichsu">
+                                        <!-- <div style="display: inline-block; padding: 0px; width: 56.5%;" class="cart-shiping-update-wrapper btnlichsu">
                                             <div class="cart-shiping-update btn-hover">
                                                 <a style="float: right;" href="?act=huydonhang&id=<?= $item['id'];?>">Hủy đơn hàng</a>
                                             </div>
-                                        </div>
+                                        </div> -->
                                     </div>
                                 </div>
                             </div>
@@ -191,7 +199,7 @@
                             <div class="card shadow-0 border mb-4">
                                 <div class="card-body">
                                     <div class="row">
-                                        <?php foreach (load_all_ctdh_lsmh($item['id']) as $ctdh) : ?>
+                                        <?php $tongthanhtoan=0; foreach (load_all_ctdh_lsmh($item['id']) as $ctdh) : ?>
                                             <div class="col-md-2">
                                                 <img src="../uploads/<?= $ctdh['image'];?>" class="img-fluid" alt="Err">
                                             </div>
@@ -205,7 +213,7 @@
                                                 <p style="font-size: 18px;" class="text-muted mb-0">Tổng tiền: <?= number_format($ctdh['thanhtien'], 0, ',', '.');?>đ</p>
                                             </div>
                                             <hr class="mb-4 mt-2" style="background-color: #e0e0e0; opacity: 1;">
-                                        <?php endforeach; ?>
+                                        <?php  $tongthanhtoan+=$ctdh['thanhtien']; endforeach; ?>
 
                                         <div style="display: inline-block;" class="row align-items-center">
                                             <div class="col-md-2">
@@ -214,6 +222,8 @@
                                                 <p style="width: 500px;" class="text-muted mb-0 small">Địa chỉ nhận hàng: <span style="color:#000;"><?= $item['diachinhan'];?></span></p>
                                                 <p style="width: 500px;" class="text-muted mb-0 small">Thanh toán: <span style="color:#2ecc71;"><?= $item['thanhtoan'];?></span></p>
                                                 <p style="width: 500px;" class="text-muted mb-0 small">Mã hóa đơn: <span style="color:red;">TB-<?= $item['id'];?></span></p>
+                                                <p style="width: 500px;" class="text-muted mb-0 small">Mã hóa đơn: <span><?=number_format($tongthanhtoan, 0, ',', '.');?> đ</span></p>
+
                                             </div>
                                         </div>
                                         
@@ -229,15 +239,16 @@
                     </div>
                     <div id="tap5" class="card-body p-4  an">
                         <?php foreach ($hoanthanh as $item) : ?>
-                            <?php if($item['trangthai']==4) $item['trangthai']="hoàn thành"; 
-                                if($item['thanhtoan']==0) $item['thanhtoan']="Chưa thanh toán";
+                            <?php if($item['trangthai']==4) $item['trangthai']="Hoàn thành"; 
+                                if($item['trangthai']="Hoàn thành") $item['thanhtoan']="Đã thanh toán";
                                 else if($item['thanhtoan']==1) $item['thanhtoan']="Đã thanh toán"; 
+                                else if($item['thanhtoan']==0) $item['thanhtoan']="Chưa thanh toán"; 
                             ?>
                         <form action="?act=lichsumuahang" method="post">
                             <div class="card shadow-0 border mb-4">
                                 <div class="card-body">
                                     <div class="row">
-                                        <?php foreach (load_all_ctdh_lsmh($item['id']) as $ctdh) : ?>
+                                        <?php $tongthanhtoan=0; foreach (load_all_ctdh_lsmh($item['id']) as $ctdh) : ?>
                                             <div class="col-md-2">
                                                 <img src="../uploads/<?= $ctdh['image'];?>" class="img-fluid" alt="Err">
                                             </div>
@@ -253,7 +264,7 @@
                                             <hr class="mb-4 mt-2" style="background-color: #e0e0e0; opacity: 1;">
                                             <input type="checkbox" name="id[]" value="<?= $ctdh['idsp']; ?>" hidden checked>
                                             <input type="hidden" name="giasp" value="<?= $ctdh['dongia'];?>">
-                                        <?php endforeach; ?>
+                                        <?php  $tongthanhtoan+=$ctdh['thanhtien']; endforeach; ?>
 
                                         <div style="display: inline-block;" class="row align-items-center">
                                             <div class="col-md-2">
@@ -262,6 +273,8 @@
                                                 <p style="width: 500px;" class="text-muted mb-0 small">Địa chỉ nhận hàng: <span style="color:#000;"><?= $item['diachinhan'];?></span></p>
                                                 <p style="width: 500px;" class="text-muted mb-0 small">Thanh toán: <span style="color:#2ecc71;"><?= $item['thanhtoan'];?></span></p>
                                                 <p style="width: 500px;" class="text-muted mb-0 small">Mã hóa đơn: <span style="color:red;">TB-<?= $item['id'];?></span></p>
+                                                <p style="width: 500px;" class="text-muted mb-0 small">Mã hóa đơn: <span><?=number_format($tongthanhtoan, 0, ',', '.');?> đ</span></p>
+
                                             </div>
                                         </div>
                                         
@@ -287,7 +300,7 @@
                             <div class="card shadow-0 border mb-4">
                                 <div class="card-body">
                                     <div class="row">
-                                        <?php foreach (load_all_ctdh_lsmh($item['id']) as $ctdh) : ?>
+                                        <?php $tongthanhtoan=0; foreach (load_all_ctdh_lsmh($item['id']) as $ctdh) : ?>
                                             <div class="col-md-2">
                                                 <img src="../uploads/<?= $ctdh['image'];?>" class="img-fluid" alt="Err">
                                             </div>
@@ -303,7 +316,7 @@
                                             <hr class="mb-4 mt-2" style="background-color: #e0e0e0; opacity: 1;">
                                             <input type="checkbox" name="id[]" value="<?= $ctdh['idsp']; ?>" hidden checked>
                                             <input type="hidden" name="giasp" value="<?= $ctdh['dongia'];?>">
-                                        <?php endforeach; ?>
+                                        <?php  $tongthanhtoan+=$ctdh['thanhtien']; endforeach; ?>
 
                                         <div style="display: inline-block;" class="row align-items-center">
                                             <div class="col-md-2">
@@ -312,6 +325,7 @@
                                                 <p style="width: 500px;" class="text-muted mb-0 small">Địa chỉ nhận hàng: <span style="color:#000;"><?= $item['diachinhan'];?></span></p>
                                                 <p style="width: 500px;" class="text-muted mb-0 small">Thanh toán: <span style="color:#2ecc71;"><?= $item['thanhtoan'];?></span></p>
                                                 <p style="width: 500px;" class="text-muted mb-0 small">Mã hóa đơn: <span style="color:red;">TB-<?= $item['id'];?></span></p>
+                                                <p style="width: 500px;" class="text-muted mb-0 small">Mã hóa đơn: <span><?=number_format($tongthanhtoan, 0, ',', '.');?> đ</span></p>
                                             </div>
                                         </div>
                                         

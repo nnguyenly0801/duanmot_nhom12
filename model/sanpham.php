@@ -129,4 +129,9 @@ function sum_luotxem(){
     $query="SELECT SUM(luotxem) FROM sanpham";
     return pdo_query_one($query);
 }
+
+function sum_sanpham(){
+    $query="SELECT tensp, soluong FROM sanpham";
+    return pdo_query($query);
+}
 ?>

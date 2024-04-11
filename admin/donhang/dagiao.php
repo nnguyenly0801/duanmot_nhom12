@@ -33,9 +33,13 @@
                             <?php
                             foreach ($listdh as $dh) {
                                 extract($dh);
-                                if($trangthai==4) $trangthai="Đã giao !";
-                                if($thanhtoan==0){$thanhtoan="Chưa thanh toán"; $class="thanhtoanadmin2";} 
-                                else {$thanhtoan="Đã thanh toán"; $class="thanhtoanadmin1";} 
+                                if($trangthai==4){
+                                    $trangthai="Đã giao !";
+                                    $thanhtoan="Đã thanh toán";
+                                    $class="thanhtoanadmin1";
+                                } 
+                                //if($thanhtoan==0){$thanhtoan="Chưa thanh toán"; $class="thanhtoanadmin2";} 
+                                //else {$thanhtoan="Đã thanh toán"; } 
                                 echo '<tr>
                                         <td class="col-1 align-middle">TB-'.$iddh.'</td>
                                         <td class="col-3 align-middle">
