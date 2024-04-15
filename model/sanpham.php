@@ -8,6 +8,20 @@ function load_sp_nb(){
     return pdo_query($query);
 }
 
+function load_all_sp($kyw,$page){
+    $query="SELECT sanpham.*, danhmuc.tendm FROM sanpham INNER JOIN danhmuc ON sanpham.iddm=danhmuc.id WHERE 1";
+    if($kyw!=""){
+        $query .=" AND (tensp like '%".$kyw."%' OR giasp LIKE '%" . $kyw . "%')";
+    }
+    if($page>0){
+        $batdau=intval($page*9-9);
+        $query .=" ORDER BY id desc limit $batdau,9";
+    }else{
+        $query .=" ORDER BY id asc";
+    }
+    return pdo_query($query);
+}
+
 function load_sp_lq($iddm){
     $query="SELECT sanpham.*, danhmuc.tendm FROM sanpham INNER JOIN danhmuc ON sanpham.iddm=danhmuc.id WHERE 1";
     if($iddm!=""){
