@@ -531,7 +531,7 @@ if(isset($_GET['act'])&&($_GET['act']!="")){
             //         </script>';
             //     }
             // }
-            break;
+            
         default:
         include "home.php";
             break;
