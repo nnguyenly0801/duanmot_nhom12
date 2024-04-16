@@ -25,8 +25,10 @@
     <!-- Custom styles for this page -->
     <link href="../assets/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&family=Tilt+Neon&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/fontawesome-free-6.4.2-web/css/all.min.css">
 
 </head>
 

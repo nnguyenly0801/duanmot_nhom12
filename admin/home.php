@@ -1,6 +1,7 @@
 
 <div class="container-fluid">
     <h1 class="h3 mb-2 text-gray-800 mb-5">Thống kê doanh thu theo: <select name="thongkengay" id="thongkengay">
+                                                                        <option value="1">1 ngày qua</option>
                                                                         <option value="7">7 ngày qua</option>
                                                                         <option value="28">28 ngày qua</option>
                                                                         <option value="90">90 ngày qua</option>

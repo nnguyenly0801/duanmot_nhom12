@@ -518,6 +518,10 @@ if(isset($_GET['act'])&&($_GET['act']!="")){
         case 'danhsachthongke': 
             $listthongke=load_all_thongke(365);
             $listslsp = sum_sanpham();
+            $listsp = dem_sp_tk();
+            $listbl = dem_bl_sp_tk();
+            $listdh = count_donhang_hoanthanh();
+            $listthongkesp = dem_sptk();
             include "thongke/list.php";
             break;   
             // if(isset($_GET['id'])&&($_GET['id']!="")){

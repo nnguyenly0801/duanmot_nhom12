@@ -46,9 +46,11 @@ function quenmatkhau($email , $tendangnhap){
     return pdo_query_one($query);
 }
 function count_tk(){
-    $query="SELECT COUNT(*) FROM taikhoan WHERE trangthai=0";
+    $query="SELECT COUNT(id) as soluongtk FROM taikhoan WHERE trangthai=0";
     return pdo_query_one($query);
 }
+
+
 function update_trangthai_tk($id,$trangthai){
     $query="UPDATE taikhoan SET trangthai='$trangthai' WHERE id='$id'";
     pdo_execute($query);

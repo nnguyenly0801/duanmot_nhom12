@@ -48,6 +48,18 @@ function dem_sp(){
     $query="SELECT COUNT(*) FROM sanpham WHERE 1";
     return pdo_query_one($query);
 }
+
+function dem_sp_tk(){
+    $query="SELECT COUNT(id) as sosp FROM sanpham WHERE 1";
+    return pdo_query_one($query);
+}
+
+function dem_sptk(){
+    $query="SELECT soluong, tensp as tensp FROM sanpham";
+    return pdo_query($query);
+}
+
+
 function load_all_spdm($iddm,$kyw,$giadau,$giacuoi,$page){
     $query="SELECT * FROM sanpham WHERE 1";
     if($iddm > 0){
